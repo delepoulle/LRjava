@@ -4,8 +4,8 @@ import java.io.*;
 public class Scene {
 
 	private static float EPSILON = 1E-3f;
-	private HashSet objets;
-	private HashSet sources;
+	private HashSet<Primitive> objets;
+	private HashSet<Source> sources;
 
 	// Scene(){
 	// objets = new HashSet();
@@ -20,8 +20,8 @@ public class Scene {
 	 */
 	public Scene(String nomFichier) {
 
-		objets = new HashSet();
-		sources = new HashSet();
+		objets = new HashSet<>();
+		sources = new HashSet<>();
 
 		load(nomFichier);
 	}
@@ -31,7 +31,7 @@ public class Scene {
 	 * 
 	 * @return l'itérateur
 	 */
-	public Iterator objetsIterator() {
+	public Iterator<Primitive> objetsIterator() {
 		return objets.iterator();
 	}
 
@@ -40,7 +40,7 @@ public class Scene {
 	 * 
 	 * @return l'itérateur
 	 */
-	public Iterator sourcesIterator() {
+	public Iterator<Source> sourcesIterator() {
 		return sources.iterator();
 	}
 
@@ -56,13 +56,14 @@ public class Scene {
 		Primitive obj;
 
 		pproche = null;
-		Iterator li = objets.iterator();
+		Iterator<Primitive> li = objets.iterator();
 		while (li.hasNext()) {
-			obj = (Primitive) li.next();
+			obj =  li.next();
 			p = obj.intersecte(r);
 			if (p != null) {// conserver l'intersection la plus proche
-				if (p.compareTo(pproche) < 0)
+				if (p.compareTo(pproche) < 0){
 					pproche = p;
+				}
 			}
 		}
 		return pproche;
@@ -82,9 +83,9 @@ public class Scene {
 		Primitive obj;
 		Rayon r = new Rayon(p1, p2);
 
-		Iterator li = objets.iterator();
+		Iterator<Primitive> li = objets.iterator();
 		while (li.hasNext()) {
-			obj = (Primitive) li.next();
+			obj = li.next();
 			if (obj.coupe(r, 1.0f) == true)
 				return true;
 		}
@@ -95,18 +96,20 @@ public class Scene {
 	 * affiche la liste des objets et des sources présents dans la scène
 	 */
 	public void display() {
-		Iterator it;
+		
 		// affichage des sources
 		System.out.println("-- liste des sources presentes dans la scene --");
-		it = sources.iterator();
-		while (it.hasNext())
-			System.out.println((Source) it.next());
+
+		for (Source s : sources){
+			System.out.println(s);
+		}
 
 		// affichage des objets
 		System.out.println("-- liste des objets presents dans la scene --");
-		it = objets.iterator();
-		while (it.hasNext())
-			System.out.println((Primitive) it.next());
+
+		for (Primitive p : objets){
+			System.out.println(p);
+		}
 	}
 	// fonctions privées à la classe
 
