@@ -1,5 +1,7 @@
 import java.util.Iterator;
 
+/** classe qui représente une intersection */
+
 public class Intersection extends Point {
 
     // attributs
@@ -90,9 +92,9 @@ public class Intersection extends Point {
         float r, v, b;
 
         // lancer les rayons d'ombrage
-        Iterator it = s.sourcesIterator();
+        Iterator<Source> it = s.sourcesIterator();
         while (it.hasNext()) {
-            Source source = (Source) it.next();
+            Source source = it.next();
 
             if (!s.coupe(inter, source.getPosition())) {
                 i.add(objet.computeSourceContribution(inter, source, obs));

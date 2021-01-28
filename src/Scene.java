@@ -1,6 +1,14 @@
 import java.util.*;
 import java.io.*;
 
+/**
+ * 
+ * Représentation de la scène à partir :
+ * 
+ * - d'une liste de primitives - d'une liste de sources limineuses
+ * 
+ */
+
 public class Scene {
 
 	private static float EPSILON = 1E-3f;
@@ -58,10 +66,10 @@ public class Scene {
 		pproche = null;
 		Iterator<Primitive> li = objets.iterator();
 		while (li.hasNext()) {
-			obj =  li.next();
+			obj = li.next();
 			p = obj.intersecte(r);
 			if (p != null) {// conserver l'intersection la plus proche
-				if (p.compareTo(pproche) < 0){
+				if (p.compareTo(pproche) < 0) {
 					pproche = p;
 				}
 			}
@@ -96,18 +104,18 @@ public class Scene {
 	 * affiche la liste des objets et des sources présents dans la scène
 	 */
 	public void display() {
-		
+
 		// affichage des sources
 		System.out.println("-- liste des sources presentes dans la scene --");
 
-		for (Source s : sources){
+		for (Source s : sources) {
 			System.out.println(s);
 		}
 
 		// affichage des objets
 		System.out.println("-- liste des objets presents dans la scene --");
 
-		for (Primitive p : objets){
+		for (Primitive p : objets) {
 			System.out.println(p);
 		}
 	}

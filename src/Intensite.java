@@ -1,5 +1,8 @@
 import java.awt.Color;
 
+/**
+ * Classe qui représente une intensité lumineuse
+ */
 public class Intensite {
 
     private float rouge, vert, bleu;
