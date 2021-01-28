@@ -118,23 +118,23 @@ public class Polygone extends Primitive {
 	Point o = r.origine();
 
 	// calcul du coefficient constant de l'équation du plan support
-	float dd = -(normale.getX() * tabSom[0].x +
+	double dd = -(normale.getX() * tabSom[0].x +
 		     normale.getY() * tabSom[0].y +
 		     normale.getZ() * tabSom[0].z);
 
 	// calcul de l'intersection entre le plan support et le rayon
-	float denominateur =
+	double denominateur =
 	    normale.getX() * d.getX() +
 	    normale.getY() * d.getY() +
 	    normale.getZ() * d.getZ();
 	if(denominateur==0.0) return null; //plan et rayon parallèles
 
-	float numerateur =  
+	double numerateur =  
 	    normale.getX() * o.x +
 	    normale.getY() * o.y +
 	    normale.getZ() * o.z + dd;
 
-	float t = - numerateur / denominateur;
+	double t = - numerateur / denominateur;
 	if(t < EPSILON) return null; // plan derrière l'origine du rayon
 
 	Point pi = new Point(o.x + t*d.getX(),
@@ -148,12 +148,12 @@ public class Polygone extends Primitive {
     }
 
 
-    public boolean coupe(Rayon r, float tmax){
+    public boolean coupe(Rayon r, double tmax){
 	Intersection inter = this.intersecte(r);
 
 	if(inter==null) return false;
 
-	float t = inter.getDistance();
+	double t = inter.getDistance();
 	return ((t>=EPSILON) && (t<=tmax-EPSILON));
 
     }
@@ -179,7 +179,7 @@ public class Polygone extends Primitive {
     // voir algo de badouel GGEMS1
 
     private boolean interne(Point pi){
-	float axeDominant,u0,u1,u2,v0,v1,v2,alpha,beta;
+	double axeDominant,u0,u1,u2,v0,v1,v2,alpha,beta;
 	boolean inter;
 	int i;
 

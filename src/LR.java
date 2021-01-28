@@ -7,10 +7,10 @@ class LR {
 	static final int NIVEAU = 0;
 
 	public static void main(String[] args) {
-		float largeurPixel = 2.0f / LARGEUR;
-		float hauteurPixel = 2.0f / HAUTEUR;
+		double largeurPixel = 2.0f / LARGEUR;
+		double hauteurPixel = 2.0f / HAUTEUR;
 
-		float ratio = (float)LARGEUR/(float)HAUTEUR;
+		double ratio = (double)LARGEUR/(double)HAUTEUR;
 
 		Scene sc = new Scene("simple.txt");
 		sc.display();
@@ -26,15 +26,15 @@ class LR {
 				for (int n = 0; n < NBRAYONS; n++) {
 
 					// milieu du pixel sauf si anti-aliasage
-					float dx = 0.5f;
-					float dy = 0.5f;
+					double dx = 0.5f;
+					double dy = 0.5f;
 					if (ANTIALIASAGE){
-						dx = (float) Math.random();
-						dy = (float) Math.random();
+						dx = Math.random();
+						dy = Math.random();
 					}
 
-					float posX = -1.0f + (x + dx) * largeurPixel;
-					float posY =  1.0f - (y + dy) * hauteurPixel;
+					double posX = -1.0f + (x + dx) * largeurPixel;
+					double posY =  1.0f - (y + dy) * hauteurPixel;
 
 					// générer le rayon primaire
 					Point dir = new Point(posX, posY/ratio, 0.0f);

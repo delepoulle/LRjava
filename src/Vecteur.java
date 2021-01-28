@@ -1,7 +1,7 @@
 public class Vecteur {
 
     // attributs
-    private float dx, dy, dz; /* direction du vecteur */
+    private double dx, dy, dz; /* direction du vecteur */
 
     /** crée un vecteur de direction (0,0,-1)
      */
@@ -13,7 +13,7 @@ public class Vecteur {
      * @param y l'ordonnée de la direction du nouveau vecteur
      * @param z la hauteur de la direction du nouveau vecteur
      */
-    public Vecteur(float dx, float dy, float dz){
+    public Vecteur(double dx, double dy, double dz){
 	    this.dx = dx; this.dy = dy; this.dz = dz;
     }
 
@@ -37,17 +37,17 @@ public class Vecteur {
     /** fournit l'abscisse du vecteur 
      * @return la coordonnée x du vecteur
      */
-    public float getX(){ return dx;}
+    public double getX(){ return dx;}
 
     /** fournit l'ordonnée du vecteur 
      * @return la coordonnée y du vecteur
      */
-    public float getY(){ return dy;}
+    public double getY(){ return dy;}
 
     /** fournit la hauteur du vecteur 
      * @return la coordonnée z du vecteur
      */
-    public float getZ(){ return dz;}
+    public double getZ(){ return dz;}
 
 
     public String toString(){
@@ -57,7 +57,7 @@ public class Vecteur {
     /** normalise le vecteur courant
      */
     public void normalise(){
-	float norme = (float)Math.sqrt(dx*dx + dy*dy +dz*dz);
+	double norme = Math.sqrt(dx*dx + dy*dy +dz*dz);
 	if(norme !=0.0){
 	    dx /= norme;
 	    dy /= norme;
@@ -68,15 +68,15 @@ public class Vecteur {
     /** calcule la norme du vecteur courant
      * @return la norme du vecteur courant
      */
-    public float norme(){
-	return (float)Math.sqrt(dx*dx + dy*dy +dz*dz);
+    public double norme(){
+	return (double)Math.sqrt(dx*dx + dy*dy +dz*dz);
     }
 
     /** calcule le produit scalaire entre le vecteur courant et le vecteur passé en paramètre.
      * @param v le vecteur avec lequel effectuer le produit scalaire.
      * @return le produit scalaire this . v
      */
-    public float produitScalaire(Vecteur v){
+    public double produitScalaire(Vecteur v){
 	return dx*v.dx + dy*v.dy + dz*v.dz;
     }
 
@@ -117,7 +117,7 @@ public class Vecteur {
     /** multiplie le vecteur courant par le scalaire passé en paramètre.
      * @param f le scalaire par lequel multiplier les composantes du vecteur courant.
      */
-    public void multiply(float f){
+    public void multiply(double f){
 	dx *= f;
 	dy *= f;
 	dz *= f;
@@ -126,7 +126,7 @@ public class Vecteur {
     /** divise le vecteur courant par le scalaire passé en paramètre. Le sclaire doit être différent de 0, sous peine de déclencher une exception.
      * @param f le scalaire par lequel diviser les composantes du vecteur courant.
      */
-    public void div(float f){
+    public void div(double f){
 	dx /= f;
 	dy /= f;
 	dz /= f;

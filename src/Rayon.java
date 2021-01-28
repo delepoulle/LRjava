@@ -7,8 +7,8 @@
     public class Rayon {
 
     // attributs
-    private float x, y, z; /* coordonnées de l'origine du rayon */
-    private float dx, dy, dz; /* direction du rayon */
+    private double x, y, z; /* coordonnées de l'origine du rayon */
+    private double dx, dy, dz; /* direction du rayon */
 
     /** crée un rayon d'origine (0,0,0) et de direction (0,0,-1)
      */
@@ -25,7 +25,7 @@
      * @param dy ordonnée du vecteur direction du rayon
      * @param dz hauteur du vecteur direction du rayon
      */
-    public Rayon(float x, float y, float z, float dx, float dy, float dz){
+    public Rayon(double x, double y, double z, double dx, double dy, double dz){
 	this.x = x; this.y = y; this.z = z;
 	this.dx = dx; this.dy = dy; this.dz = dz;
     }

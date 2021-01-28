@@ -8,7 +8,7 @@ public abstract class Primitive {
     private Materiau mat;
     /** représentation d'un seuil pour les approximations numériques
      */
-    protected static float EPSILON = 1E-4f;
+    protected static double EPSILON = 1E-4f;
 
     // Constructeurs
     Primitive(){
@@ -21,8 +21,8 @@ public abstract class Primitive {
      * @param speculaire un tableau contenant les coefficients de réflexion spéculaire du matériau de la primitive
      * @param  brillance le coefficient de brillance de l'objet. Cette valeur est supérieure à 0.
      */
-    public Primitive(float[] ambiant,float[] diffus,
-		     float[] speculaire,float brillance){
+    public Primitive(double[] ambiant,double[] diffus,
+		     double[] speculaire,double brillance){
 	mat = new Materiau(ambiant, diffus, speculaire, brillance);
     }
 
@@ -38,7 +38,7 @@ public abstract class Primitive {
      * @param tmax la distance paramétrique maximale depuis l'origine du rayon au delà de laquelle la primitive n'est pas supposée occultante
      * @return true si le rayon coupe la primitive à une distance positive inférieure à tmax, false sinon
      */
-    public abstract boolean coupe(Rayon r, float tmax);
+    public abstract boolean coupe(Rayon r, double tmax);
 
     //abstract Rayon transmis(Point i, Vecteur incident);
 
@@ -62,17 +62,17 @@ public abstract class Primitive {
 	Intensite light = s.getIntensity();
 
 	// calcul de la contribution ambiante
-	float [] coeffAmbiant   = mat.getAmbient();
-	float r = coeffAmbiant[0] * light.getRed();
-	float v = coeffAmbiant[1] * light.getGreen();
-	float b = coeffAmbiant[2] * light.getBlue();
+	double [] coeffAmbiant   = mat.getAmbient();
+	double r = coeffAmbiant[0] * light.getRed();
+	double v = coeffAmbiant[1] * light.getGreen();
+	double b = coeffAmbiant[2] * light.getBlue();
 
 	// calcul de la contribution diffuse
-	float [] coeffDiffus   = mat.getDiffuse();
+	double [] coeffDiffus   = mat.getDiffuse();
 	Vecteur normale =  this.getNormale(i);
 	Vecteur versSource = new Vecteur(i, s.getPosition());
 	versSource.normalise();
-	float ps = normale.produitScalaire(versSource);
+	double ps = normale.produitScalaire(versSource);
 	r += coeffDiffus[0] * ps * light.getRed();
 	v += coeffDiffus[1] * ps * light.getGreen();
 	b += coeffDiffus[2] * ps * light.getBlue();
@@ -85,9 +85,9 @@ public abstract class Primitive {
 	ps = ref.produitScalaire(versObservateur);
 
 	if((ps>0.0f)){// test prenant en compte les incertitudes sur le calcul
-	    ps = (float)Math.pow(ps, mat.getCoeffSpec());
+	    ps = (double)Math.pow(ps, mat.getCoeffSpec());
 
-	    float coeffSpec[] = mat.getSpecular();
+	    double coeffSpec[] = mat.getSpecular();
 	    r += coeffSpec[0] * ps * light.getRed();
 	    v += coeffSpec[1] * ps * light.getGreen();
 	    b += coeffSpec[2] * ps * light.getBlue();
@@ -111,10 +111,10 @@ public abstract class Primitive {
 	Intensite light = s.getIntensity();
 
 	// calcul de la contribution ambiante
-	float [] coeffAmbiant   = mat.getAmbient();
-	float r = coeffAmbiant[0] * light.getRed();
-	float v = coeffAmbiant[1] * light.getGreen();
-	float b = coeffAmbiant[2] * light.getBlue();
+	double [] coeffAmbiant   = mat.getAmbient();
+	double r = coeffAmbiant[0] * light.getRed();
+	double v = coeffAmbiant[1] * light.getGreen();
+	double b = coeffAmbiant[2] * light.getBlue();
 
 	// création du résultat
 	return new Intensite(r, v, b);
@@ -128,7 +128,7 @@ public abstract class Primitive {
      */
     public Rayon reflechi(Point i, Vecteur incident){
 	Vecteur r = this.getNormale(i);
-	float ps = r.produitScalaire(incident);
+	double ps = r.produitScalaire(incident);
 	r.multiply(2.0f*ps);
 	r.sub(incident);
 	

@@ -5,7 +5,7 @@ import java.awt.Color;
 public class Sphere extends Primitive {
 
     // attributs spécifiques aux sphères
-    private float rayon;
+    private double rayon;
     private Point centre;
 
     public Sphere(){
@@ -13,7 +13,7 @@ public class Sphere extends Primitive {
 	centre = new Point(0.0f, 0.0f, 0.0f);
     }
 
-    public Sphere(float rayon, Point centre, Materiau m) {
+    public Sphere(double rayon, Point centre, Materiau m) {
 	super(m.getAmbient(), m.getDiffuse(), m.getSpecular(), m.getCoeffSpec());
 	this.rayon = rayon;
 	this.centre = new Point(centre);
@@ -21,8 +21,8 @@ public class Sphere extends Primitive {
 
     // implantation des méthodes abstraites communes aux primitives
     public Intersection intersecte(Rayon r){
-	float t, t1, t2;
-	float delta, a, b, c;
+	double t, t1, t2;
+	double delta, a, b, c;
 	Vecteur d = r.direction();
 	Point o = r.origine();
 
@@ -43,8 +43,8 @@ public class Sphere extends Primitive {
 	    t = -b / (2*a);
 	    if(t<=EPSILON) return null;
 	}else{
-	    t1 = (-b + (float)Math.sqrt(delta))/(2*a);
-	    t2 = (-b - (float)Math.sqrt(delta))/(2*a);
+	    t1 = (-b + (double)Math.sqrt(delta))/(2*a);
+	    t2 = (-b - (double)Math.sqrt(delta))/(2*a);
 	    if(t1>t2) {t=t1; t1=t2; t2=t;}
 	    if(t2<=EPSILON) return null;
 	    if((-EPSILON<=t1) && (t1<=EPSILON)) return null; // t1 = 0.0
@@ -62,9 +62,9 @@ public class Sphere extends Primitive {
     }// intersecte
 
 
-    public boolean coupe(Rayon r, float tmax){
-	float t, t1, t2;
-	float delta, a, b, c;
+    public boolean coupe(Rayon r, double tmax){
+	double t, t1, t2;
+	double delta, a, b, c;
 
 	Vecteur d = r.direction();
 	Point o = r.origine();
@@ -86,8 +86,8 @@ public class Sphere extends Primitive {
 	    t = -b / (2*a);
 	    if((t<=EPSILON)||(t>tmax-EPSILON)) return false;
 	}else{
-	    t1 = (-b + (float)Math.sqrt(delta))/(2*a);
-	    t2 = (-b - (float)Math.sqrt(delta))/(2*a);
+	    t1 = (-b + Math.sqrt(delta))/(2*a);
+	    t2 = (-b - Math.sqrt(delta))/(2*a);
 	    if(t1>t2) {t=t1; t1=t2; t2=t;}
 	    if(t2<=EPSILON) return false;
 	    if((t1>EPSILON)&&(t1<tmax-EPSILON)) return true;

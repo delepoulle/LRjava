@@ -2,7 +2,7 @@ import java.awt.Color;
 
 public class Intensite {
 
-    private float rouge, vert, bleu;
+    private double rouge, vert, bleu;
 
     /**
      * crée une intensité nulle
@@ -20,7 +20,7 @@ public class Intensite {
      * @param v la valeur (réelle) de l'intensité pour la longueur d'onde du vert
      * @param b la valeur (réelle) de l'intensité pour la longueur d'onde du bleu
      */
-    public Intensite(float r, float v, float b) {
+    public Intensite(double r, double v, double b) {
         rouge = (r < 0.0f) ? 0.0f : r;
         vert = (v < 0.0f) ? 0.0f : v;
         bleu = (b < 0.0f) ? 0.0f : b;
@@ -46,7 +46,7 @@ public class Intensite {
      * 
      * @return l'intensité pour la longueur d'onde du rouge.
      */
-    public float getRed() {
+    public double getRed() {
         return (rouge > 1.0f) ? 1.0f : rouge;
     }
 
@@ -57,7 +57,7 @@ public class Intensite {
      * 
      * @return l'intensité pour la longueur d'onde du vert.
      */
-    public float getGreen() {
+    public double getGreen() {
         return (vert > 1.0f) ? 1.0f : vert;
     }
 
@@ -68,7 +68,7 @@ public class Intensite {
      * 
      * @return l'intensité pour la longueur d'onde du bleu.
      */
-    public float getBlue() {
+    public double getBlue() {
         return (bleu > 1.0f) ? 1.0f : bleu;
     }
 
@@ -80,7 +80,7 @@ public class Intensite {
      *         couleur de la classe Color.
      */
     public Color getColor() {
-        return new Color(getRed(), getGreen(), getBlue());
+        return new Color((float)getRed(), (float)getGreen(), (float)getBlue());
     }
 
     /**
@@ -91,7 +91,7 @@ public class Intensite {
      * @param v la valeur de l'intensité à ajouter pour la longueur d'onde du vert
      * @param b la valeur de l'intensité à ajouter pour la longueur d'onde du bleu
      */
-    public void add(float r, float v, float b) {
+    public void add(double r, double v, double b) {
         rouge += (r >= 0.0f) ? r : 0.0f;
         vert += (v >= 0.0f) ? v : 0.0f;
         bleu += (b >= 0.0f) ? b : 0.0f;
@@ -113,7 +113,7 @@ public class Intensite {
      * 
      * @param v le scalaire par lequel diviser l'intensité courante
      */
-    public void div(float v) {
+    public void div(double v) {
         if (v != 0.0f) {
             rouge /= v;
             vert /= v;

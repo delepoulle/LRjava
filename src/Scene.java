@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Scene {
 
-	private static float EPSILON = 1E-3f;
+	private static double EPSILON = 1E-3f;
 	private HashSet<Primitive> objets;
 	private HashSet<Source> sources;
 
@@ -133,15 +133,15 @@ public class Scene {
 					System.out.println("erreur sur ligne " + numLigne);
 				}
 				if (f.sval.compareTo("sphere") == 0) {
-					float xc, yc, zc, r;
+					double xc, yc, zc, r;
 					res = f.nextToken();
-					xc = (float) f.nval;
+					xc = (double) f.nval;
 					res = f.nextToken();
-					yc = (float) f.nval;
+					yc = (double) f.nval;
 					res = f.nextToken();
-					zc = (float) f.nval;
+					zc = (double) f.nval;
 					res = f.nextToken();
-					r = (float) f.nval;
+					r = (double) f.nval;
 
 					Sphere s = new Sphere(r, new Point(xc, yc, zc), mat);
 					objets.add(s);
@@ -149,7 +149,7 @@ public class Scene {
 				}
 
 				if (f.sval.compareTo("polygone") == 0) {
-					float x, y, z;
+					double x, y, z;
 					int nbsom;
 					Point[] tabsom;
 
@@ -158,11 +158,11 @@ public class Scene {
 					tabsom = new Point[nbsom + 1];
 					for (int s = 0; s < nbsom; s++) {
 						res = f.nextToken();
-						x = (float) f.nval;
+						x = (double) f.nval;
 						res = f.nextToken();
-						y = (float) f.nval;
+						y = (double) f.nval;
 						res = f.nextToken();
-						z = (float) f.nval;
+						z = (double) f.nval;
 						tabsom[s] = new Point(x, y, z);
 					}
 					tabsom[nbsom] = new Point(tabsom[0]);
@@ -184,24 +184,24 @@ public class Scene {
 				// }
 
 				if (f.sval.compareTo("source") == 0) {
-					float x, y, z;
-					float r, v, b;
+					double x, y, z;
+					double r, v, b;
 
 					// saisie des coordonnées de la source
 					res = f.nextToken();
-					x = (float) f.nval;
+					x = (double) f.nval;
 					res = f.nextToken();
-					y = (float) f.nval;
+					y = (double) f.nval;
 					res = f.nextToken();
-					z = (float) f.nval;
+					z = (double) f.nval;
 
 					// saisie de l'intensite de la source
 					res = f.nextToken();
-					r = (float) f.nval;
+					r = (double) f.nval;
 					res = f.nextToken();
-					v = (float) f.nval;
+					v = (double) f.nval;
 					res = f.nextToken();
-					b = (float) f.nval;
+					b = (double) f.nval;
 					Intensite puiss = new Intensite(r, v, b);
 					Source light = new Source(puiss, new Point(x, y, z));
 					sources.add(light);
@@ -209,34 +209,34 @@ public class Scene {
 				}
 
 				if (f.sval.compareTo("materiau") == 0) {
-					float[] ambiant = new float[3];
-					float[] diffus = new float[3];
-					float[] speculaire = new float[3];
-					float coeff;
+					double[] ambiant = new double[3];
+					double[] diffus = new double[3];
+					double[] speculaire = new double[3];
+					double coeff;
 
 					res = f.nextToken();
-					ambiant[0] = (float) f.nval;
+					ambiant[0] = (double) f.nval;
 					res = f.nextToken();
-					ambiant[1] = (float) f.nval;
+					ambiant[1] = (double) f.nval;
 					res = f.nextToken();
-					ambiant[2] = (float) f.nval;
+					ambiant[2] = (double) f.nval;
 
 					res = f.nextToken();
-					diffus[0] = (float) f.nval;
+					diffus[0] = (double) f.nval;
 					res = f.nextToken();
-					diffus[1] = (float) f.nval;
+					diffus[1] = (double) f.nval;
 					res = f.nextToken();
-					diffus[2] = (float) f.nval;
+					diffus[2] = (double) f.nval;
 
 					res = f.nextToken();
-					speculaire[0] = (float) f.nval;
+					speculaire[0] = (double) f.nval;
 					res = f.nextToken();
-					speculaire[1] = (float) f.nval;
+					speculaire[1] = (double) f.nval;
 					res = f.nextToken();
-					speculaire[2] = (float) f.nval;
+					speculaire[2] = (double) f.nval;
 
 					res = f.nextToken();
-					coeff = (float) f.nval;
+					coeff = (double) f.nval;
 
 					mat = new Materiau(ambiant, diffus, speculaire, coeff);
 					continue;

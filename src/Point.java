@@ -7,17 +7,17 @@ public class Point {
     /**
      * coordonnée x
      */
-    protected float x;
+    protected double x;
 
     /**
      * coordonnée y
      */
-    protected float y;
+    protected double y;
 
     /**
      * coordonnée z
      */
-    protected float z; /* coordonnées du point */
+    protected double z; /* coordonnées du point */
 
     /**
      * crée un point de coordonnées (0,0,0)
@@ -33,7 +33,7 @@ public class Point {
      * @param y l'ordonnée du point
      * @param z la hauteur du point
      */
-    public Point(float x, float y, float z) {
+    public Point(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -57,7 +57,7 @@ public class Point {
         z = p.z;
     }
 
-    void set(float x, float y, float z) {
+    void set(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;

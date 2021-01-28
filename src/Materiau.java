@@ -3,16 +3,16 @@
 public class Materiau {
 
     // attributs d'un materiau
-    private float[] Ka, Kd, Ks;
-    private float coeffSpec;
+    private double[] Ka, Kd, Ks;
+    private double coeffSpec;
 
     /** Construction d'un matériau par défaut. Les longueurs d'onde considérées sont au nombre de 3 (rouge, vert et bleu) et les coefficients sont initialisés de manière identique pour les 3 longueurs d'onde : 0.2 pour la réflexion ambiante, 0.8 pour la réflexion diffuse et 0.0 pour la réflexion spéculaire. Le coefficient spéculaire est également nul.
      */
     public Materiau(){
 	
-	Ka = new float[3];
-	Kd = new float[3];
-	Ks = new float[3];
+	Ka = new double[3];
+	Kd = new double[3];
+	Ks = new double[3];
 
 	for(int i=0; i<3; i++){
 	    Ka[i]=0.2f; Kd[i]=0.8f; Ks[i]=0.0f;
@@ -26,11 +26,11 @@ public class Materiau {
      * @param dif tableau contenant les coefficients de réflexion spéculaire pour le rouge, le vert et le bleu
      * @param coeffSpec le coefficient de spécularité du matériau
      */
-    public Materiau(float[] amb, float[] dif, float[] spec, float coeffSpec){
+    public Materiau(double[] amb, double[] dif, double[] spec, double coeffSpec){
 	
-	Ka = new float[3];
-	Kd = new float[3];
-	Ks = new float[3];
+	Ka = new double[3];
+	Kd = new double[3];
+	Ks = new double[3];
 
 	for(int i=0; i<3; i++){
 	    Ka[i]=amb[i]; Kd[i]=dif[i]; Ks[i]=spec[i];
@@ -43,8 +43,8 @@ public class Materiau {
     /** Fournit les coefficients de réflexion ambiante.
      * @return un tableau de taille 3, dont les cases représentent respectivement les coefficients de réflexion ambiante pour le rouge, le vert et le bleu
      */
-    public float[] getAmbient(){
-	float[] t = new float[3];
+    public double[] getAmbient(){
+	double[] t = new double[3];
 
 	t[0]=Ka[0]; t[1]=Ka[1]; t[2]=Ka[2];
 
@@ -54,8 +54,8 @@ public class Materiau {
     /** Fournit les coefficients de réflexion diffuse.
      * @return un tableau de taille 3, dont les cases représentent respectivement les coefficients de réflexion diffuse pour le rouge, le vert et le bleu
      */
-    public float[] getDiffuse(){
-	float[] t = new float[3];
+    public double[] getDiffuse(){
+	double[] t = new double[3];
 
 	t[0]=Kd[0]; t[1]=Kd[1]; t[2]=Kd[2];
 
@@ -65,8 +65,8 @@ public class Materiau {
     /** Fournit les coefficients de réflexion spéculaire.
      * @return un tableau de taille 3, dont les cases représentent respectivement les coefficients de réflexion spéculaire pour le rouge, le vert et le bleu
      */
-    public float[] getSpecular(){
-	float[] t = new float[3];
+    public double[] getSpecular(){
+	double[] t = new double[3];
 
 	t[0]=Ks[0]; t[1]=Ks[1]; t[2]=Ks[2];
 
@@ -75,7 +75,7 @@ public class Materiau {
     /** Fournit le coefficient de spécularité du matériau
      * @return le coefficient de spécularité du matériau
      */
-    public float getCoeffSpec(){ return coeffSpec;}
+    public double getCoeffSpec(){ return coeffSpec;}
 
     /** Permet de déterminer si le matériau comporte une composante spéculaire. Ce test est effectué en vérifiant que l'un des facteurs de réflexion spéculaire est non nul.
      * @return vrai si le matériau comporte une composante spéculaire, faux sinon
