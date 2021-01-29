@@ -17,13 +17,7 @@ class LR {
 		r.setScene(sc);
 		r.setNiveau(NIVEAU);
 
-		Image image = new Image(LARGEUR, HAUTEUR);
-
-		for (int y = 0; y < HAUTEUR; y++) {
-			for (int x = 0; x < LARGEUR; x++) {
-				image.setPixel(x, y, (r.getIntensite(x, y, NBRAYONS)).getColor());
-			}
-		}
+		Image image = r.renderFullImage(NBRAYONS);
 		image.save("image" + NIVEAU, "png");
 	}
 }

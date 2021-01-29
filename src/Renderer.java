@@ -29,6 +29,8 @@ public class Renderer {
 	/** niveau de réflexion (nombre de réflexions autorisées depuis le rayon primaire) */
 	private int niveau = 0;
 
+	private Image im;
+
 /**
  * Constructeur avec taille de l'image et activation ou non de l'antialiasage
  * @param largeur
@@ -44,6 +46,9 @@ public class Renderer {
 		this.hauteurPixel = 2.0f / hauteur;
 
 		this.ratio = (float) largeur / (float) hauteur;
+
+		im = new Image(this.largeur, this.hauteur);
+
 	}
 
 
@@ -120,4 +125,18 @@ public class Renderer {
 		in.div(nbrayon);
 		return in;
 	}
+
+
+	public Image renderFullImage(int nbrayon){
+
+		
+		for (int y = 0; y < this.hauteur; y++) {
+			for (int x = 0; x < this.largeur; x++) {
+				im.setPixel(x, y, (this.getIntensite(x, y, nbrayon)).getColor());
+			}
+		}
+
+		return im;
+	} 
+	
 }

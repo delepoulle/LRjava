@@ -148,7 +148,6 @@ public class Polygone extends Primitive {
 
 		float t = inter.getDistance();
 		return ((t >= EPSILON) && (t <= tmax - EPSILON));
-
 	}
 
 	public Vecteur getNormale(Point i) {
