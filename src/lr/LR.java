@@ -21,7 +21,16 @@ class LR {
 		r.setScene(sc);
 		r.setNiveau(NIVEAU);
 
-		Image image = r.renderFullImage(NBRAYONS);
+		 //r.renderFullImage(NBRAYONS);
+
+		 for (int i=0; i<HAUTEUR; i++){
+			 r.renderLine(i, NBRAYONS);
+		 }
+		 Image image = r.getIm();
+
+		
+		//Image image = r.getIm();
+
 		image.save("image" + NIVEAU, "png");
 	}
 }
