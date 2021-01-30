@@ -1,4 +1,4 @@
-import java.awt.Color;
+package lr;
 
 /**
  * Classe permettant la représentation d'une sphère

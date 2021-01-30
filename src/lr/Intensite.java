@@ -1,3 +1,5 @@
+package lr;
+
 import java.awt.Color;
 
 /**

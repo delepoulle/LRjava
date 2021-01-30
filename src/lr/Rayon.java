@@ -1,3 +1,4 @@
+package lr;
 
 /**
  * Classe qui représente un rayon. Un rayon est défini par son origine (un

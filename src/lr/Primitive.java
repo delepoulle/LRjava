@@ -1,4 +1,4 @@
-import java.awt.Color;
+package lr;
 
 /**
  * Classe abstraite commune à tous les primitives géométriques pouvant

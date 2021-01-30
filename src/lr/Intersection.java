@@ -1,3 +1,5 @@
+package lr;
+
 import java.util.Iterator;
 
 /** classe qui représente une intersection */

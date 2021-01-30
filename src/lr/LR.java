@@ -1,4 +1,8 @@
-/** 
+package lr;
+
+import lr.format.simple.FormatSimple;
+
+/**
  * Classe principale 
  * 
  * auteurs : Christophe Renaud, Samuel Delepoulle, Franck Vandewiele
@@ -12,7 +16,7 @@ class LR {
 	public static void main(String[] args) {
 
 		Renderer r = new Renderer(LARGEUR, HAUTEUR);
-		Scene sc = new Scene("simple.txt");
+		Scene sc = new FormatSimple().charger("simple.txt");
 		sc.display();
 		r.setScene(sc);
 		r.setNiveau(NIVEAU);

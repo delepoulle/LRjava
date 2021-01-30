@@ -1,3 +1,5 @@
+package lr;
+
 /**
  * Classe qui représente un calcul d'illumination à partir d'une scene et d'une
  * grille de pixels

@@ -1,3 +1,4 @@
+package lr;
 
 /**
  * Classe qui représente un point dans un espace 3D

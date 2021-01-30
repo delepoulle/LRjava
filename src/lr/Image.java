@@ -1,3 +1,5 @@
+package lr;
+
 import java.awt.Color;
 import java.io.*;
 import java.awt.image.BufferedImage;

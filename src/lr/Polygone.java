@@ -1,4 +1,5 @@
-import java.awt.Color;
+package lr;
+
 import java.lang.Math;
 
 // classe de polygone CONVEXES ...
