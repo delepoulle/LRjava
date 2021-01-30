@@ -1,7 +1,6 @@
 package lr;
 
 import java.util.*;
-import java.io.*;
 
 /**
  * 
@@ -88,7 +87,7 @@ public class Scene {
 	 * en P2.
 	 * 
 	 * @param p1 le point de départ du segment
-	 * @praam le point d'arrivée du segment
+	 * @param p2 le point d'arrivée du segment
 	 * @return true si un objet coupe le segment [p1,p2], false sinon
 	 */
 	boolean coupe(Point p1, Point p2) {

@@ -17,9 +17,9 @@ public class Vecteur {
     /**
      * crée un vecteur de direction (dx,dy,dz)
      * 
-     * @param x l'abscisse de la direction du nouveau vecteur
-     * @param y l'ordonnée de la direction du nouveau vecteur
-     * @param z la hauteur de la direction du nouveau vecteur
+     * @param dx l'abscisse de la direction du nouveau vecteur
+     * @param dy l'ordonnée de la direction du nouveau vecteur
+     * @param dz la hauteur de la direction du nouveau vecteur
      */
     public Vecteur(float dx, float dy, float dz) {
         this.dx = dx;
@@ -30,8 +30,8 @@ public class Vecteur {
     /**
      * crée un vecteur de direction p1p2
      * 
-     * @param v1 l'origine du nouveau vecteur
-     * @param v2 l'extrémité du nouveau vecteur
+     * @param p1 l'origine du nouveau vecteur
+     * @param p2 l'extrémité du nouveau vecteur
      */
     public Vecteur(Point p1, Point p2) {
         this.dx = p2.x - p1.x;
@@ -184,26 +184,16 @@ public class Vecteur {
      * teste l'égalité de objets instances de vecteur 3D. La comparaison s'effectue
      * coordonnée par coordonnée.
      * 
-     * @param v le vecteur avec lequel faire la comparaison
+     * @param o le vecteur avec lequel faire la comparaison
      * @return true si les deux vecteurs sont égaux, false sinon
      * @author Samuel
      */
     public boolean equals(Object o) {
         if (!(o instanceof Vecteur))
             return false;
-        Vecteur v = (Vecteur) o;
+        Vecteur vecteur = (Vecteur) o;
 
-        if (dx != v.dx)
-            return false;
-        if (dy != v.dy)
-            return false;
-        if (dz != v.dz)
-            return false;
-
-        // if(Math.abs(dx - v.dx) > 0.0001) return false;
-        // if(Math.abs(dy - v.dy) > 0.0001) return false;
-        // if(Math.abs(dz - v.dz) > 0.0001) return false;
-        return true;
+        return dx == vecteur.dx && dy == vecteur.dy && dz == vecteur.dz;
     }
 
 }// Vecteur

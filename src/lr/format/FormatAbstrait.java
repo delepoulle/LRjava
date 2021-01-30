@@ -43,9 +43,9 @@ public abstract class FormatAbstrait implements Format {
                 }
 
                 // nom de la directive en début de ligne
-                String nomDirective = f.sval;
-                // interprétation de la ligne par l'analyseur correspondant au nom de la directive
-                this.analyseurs.get(nomDirective).analyser(f, scene);
+                String motCle = f.sval;
+                // interprétation de la ligne par l'analyseur correspondant au nom du mot clé
+                this.analyseurs.get(motCle).analyser(f, scene);
             }
         } catch (IOException ioe) {
             System.out.println(ioe + " fichier " + nomFichier);

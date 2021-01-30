@@ -135,7 +135,7 @@ public class Polygone extends Primitive {
 
 		Point pi = new Point(o.x + t * d.getX(), o.y + t * d.getY(), o.z + t * d.getZ());
 
-		if (interne(pi) == true)
+		if (interne(pi))
 			return new Intersection(pi.x, pi.y, pi.z, this, t);
 
 		return null;
@@ -160,7 +160,7 @@ public class Polygone extends Primitive {
 	}// getNormale
 
 	public String toString() {
-		String res = new String("polygone a " + (tabSom.length - 1) + " cotes : ");
+		String res = "polygone a " + (tabSom.length - 1) + " cotes : ";
 		for (int s = 0; s < tabSom.length - 1; s++)
 			res += (s != tabSom.length - 2) ? tabSom[s] + "-" : tabSom[s] + ";";
 		return res;

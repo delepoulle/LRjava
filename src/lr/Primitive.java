@@ -116,7 +116,7 @@ public abstract class Primitive {
         if ((ps > 0.0f)) {// test prenant en compte les incertitudes sur le calcul
             ps = (float) Math.pow(ps, mat.getCoeffSpec());
 
-            float coeffSpec[] = mat.getSpecular();
+            float[] coeffSpec = mat.getSpecular();
             r += coeffSpec[0] * ps * light.getRed();
             v += coeffSpec[1] * ps * light.getGreen();
             b += coeffSpec[2] * ps * light.getBlue();
@@ -134,9 +134,7 @@ public abstract class Primitive {
      * sur la primitive courante. Seul l'éclairage ambiant apparaissant dans la
      * forumle de Phong est pris en compte.
      * 
-     * @param i   le point d'intersection situé sur la primitive courant
      * @param s   la source dont on souhaite calculer la contribution
-     * @param obs la position de l'observateur
      * @return l'intensité calculée
      */
     public Intensite computeSourceAmbientContribution(Source s) {

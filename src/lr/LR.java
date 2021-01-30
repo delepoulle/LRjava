@@ -1,5 +1,6 @@
 package lr;
 
+import lr.*;
 import lr.format.simple.FormatSimple;
 
 /**
@@ -10,8 +11,8 @@ import lr.format.simple.FormatSimple;
 class LR {
 	static final int LARGEUR = 1980;
 	static final int HAUTEUR = 1080;
-	static final int NBRAYONS = 1;
-	static final int NIVEAU = 2;
+	static final int NBRAYONS = 500;
+	static final int NIVEAU = 12;
 
 	public static void main(String[] args) {
 

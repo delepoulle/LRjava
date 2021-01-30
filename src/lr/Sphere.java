@@ -99,8 +99,7 @@ public class Sphere extends Primitive {
 				return false;
 			if ((t1 > EPSILON) && (t1 < tmax - EPSILON))
 				return true;
-			if ((t2 > EPSILON) && (t2 < tmax - EPSILON))
-				return true;
+			return (t2 > EPSILON) && (t2 < tmax - EPSILON);
 		}
 		return false;
 	}
@@ -113,7 +112,6 @@ public class Sphere extends Primitive {
 
 	public String toString() {
 		return "sphere de centre " + centre + " et de rayon " + rayon;
-
 	}
 
 }

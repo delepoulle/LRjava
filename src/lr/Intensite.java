@@ -148,15 +148,9 @@ public class Intensite {
         /* sd */
         if (!(o instanceof Intensite))
             return false;
-        Intensite in = (Intensite) o;
+        Intensite intensite = (Intensite) o;
         /* sd */
-        if (rouge != in.rouge)
-            return false;
-        if (vert != in.vert)
-            return false;
-        if (bleu != in.bleu)
-            return false;
-        return true;
+        return rouge == intensite.rouge && vert == intensite.vert && bleu == intensite.bleu;
     }
 
 }// Intensite

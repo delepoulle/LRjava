@@ -34,10 +34,9 @@ public class Renderer {
 	private Image im;
 
 /**
- * Constructeur avec taille de l'image et activation ou non de l'antialiasage
+ * Constructeur avec taille de l'image
  * @param largeur
  * @param hauteur
- * @param antialiasage
  */
 	public Renderer(int largeur, int hauteur) {
 
