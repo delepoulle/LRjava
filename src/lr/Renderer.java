@@ -128,16 +128,44 @@ public class Renderer {
 	}
 
 
-	public Image renderFullImage(int nbrayon){
 
+	/**
+	 * Rendre l'ensemble de l'image
+	 * 
+	 * @param nbrayon
+	 */
+	public void renderFullImage(int nbrayon){
 		
 		for (int y = 0; y < this.hauteur; y++) {
 			for (int x = 0; x < this.largeur; x++) {
 				im.setPixel(x, y, (this.getIntensite(x, y, nbrayon)).getColor());
 			}
 		}
+	} 
+
+	/**
+	 * Rendre une ligne de l'image
+	 * 
+	 * @param line
+	 * @param rayon
+	 */
+	public void renderLine(int line, int rayon){
+
+		for (int x=0; x<this.largeur; x++){
+			im.setPixel(x, line, (this.getIntensite(x, line, rayon)).getColor());
+		}
+	}
+
+
+	/**
+	 * Lire l'image
+	 * 
+	 * @return 
+	 */
+	public Image getIm() {
 
 		return im;
-	} 
-	
+		
+	}
+
 }
