@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.StreamTokenizer;
 import java.util.HashMap;
 
-public abstract class FormatAbstrait implements Format {
+public abstract class FormatAbstrait<T> implements Format<T> {
 
     protected final HashMap<String, Analyseur> listeAnalyseurs;
 
@@ -22,7 +22,7 @@ public abstract class FormatAbstrait implements Format {
         }
     }
 
-    public Scene charger(String nomFichier) {
+    public T charger(String nomFichier) {
         int numLigne = 0, res;
         Materiau mat = new Materiau();
 
@@ -52,8 +52,8 @@ public abstract class FormatAbstrait implements Format {
         } catch (IOException ioe) {
             System.out.println(ioe + " fichier " + nomFichier);
         }
-        return generateScene();
+        return generate();
     }
 
-    protected abstract Scene generateScene();
+    protected abstract T generate();
 }

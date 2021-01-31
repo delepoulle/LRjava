@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class WavefrontFormat extends FormatAbstrait {
+public class WavefrontFormat extends FormatAbstrait<Scene> {
 
     private List<Point> points;
     private List<Vecteur> normals;
@@ -106,7 +106,7 @@ public class WavefrontFormat extends FormatAbstrait {
     }
 
     @Override
-    protected Scene generateScene() {
+    protected Scene generate() {
         Scene scene = new Scene();
         this.primitives.forEach(scene::ajouter);
         return scene;

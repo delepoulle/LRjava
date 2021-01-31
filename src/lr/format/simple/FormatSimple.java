@@ -9,7 +9,7 @@ import lr.format.FormatAbstrait;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FormatSimple extends FormatAbstrait {
+public class FormatSimple extends FormatAbstrait<Scene> {
 
     private Materiau materiau;
     private final List<Primitive> primitiveList;
@@ -28,7 +28,7 @@ public class FormatSimple extends FormatAbstrait {
     }
 
     @Override
-    protected Scene generateScene() {
+    protected Scene generate() {
         Scene scene = new Scene();
         primitiveList.forEach(scene::ajouter);
         sourceList.forEach(scene::ajouter);

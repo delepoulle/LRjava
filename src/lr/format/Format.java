@@ -1,7 +1,5 @@
 package lr.format;
 
-import lr.Scene;
-
-public interface Format {
-    Scene charger(String nomFichier);
+public interface Format<T> {
+    T charger(String nomFichier);
 }

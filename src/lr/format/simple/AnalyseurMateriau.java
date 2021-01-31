@@ -1,7 +1,6 @@
 package lr.format.simple;
 
 import lr.Materiau;
-import lr.Scene;
 
 import java.io.IOException;
 import java.io.StreamTokenizer;
