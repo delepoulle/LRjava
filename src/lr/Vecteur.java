@@ -44,7 +44,7 @@ public class Vecteur {
      * 
      * @param v le vecteur servant à l'initialisation du nouveau vecteur
      */
-    Vecteur(Vecteur v) {
+    public Vecteur(Vecteur v) {
         this.dx = v.dx;
         this.dy = v.dy;
         this.dz = v.dz;

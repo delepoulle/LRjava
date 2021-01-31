@@ -1,5 +1,7 @@
 package lr;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * Classe qui représente un calcul d'illumination à partir d'une scene et d'une
  * grille de pixels
@@ -104,8 +106,10 @@ public class Renderer {
 				dx = 0.5f;
 				dy = 0.5f;
 			} else {
-				dx = (float) Math.random();
-				dy = (float) Math.random();
+				dx = ThreadLocalRandom.current().nextFloat();
+				dy = ThreadLocalRandom.current().nextFloat();
+				//dx = (float) Math.random();
+				//dy = (float) Math.random();
 			}
 
 			float posX = -1.0f + (x + dx) * largeurPixel;

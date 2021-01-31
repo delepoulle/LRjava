@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public abstract class FormatAbstrait implements Format {
 
-    private final HashMap<String, Analyseur> analyseurs;
+    protected final HashMap<String, Analyseur> analyseurs;
 
     public FormatAbstrait() {
         this.analyseurs = new HashMap<>();
@@ -31,6 +31,7 @@ public abstract class FormatAbstrait implements Format {
             // initialisations de f
             f.lowerCaseMode(true);
             f.slashSlashComments(true);
+            f.commentChar('#');
 
             while ((res = f.nextToken()) != StreamTokenizer.TT_EOF) {
                 // chaque ligne doit commencer par un mot clé
@@ -45,6 +46,7 @@ public abstract class FormatAbstrait implements Format {
                 // nom de la directive en début de ligne
                 String motCle = f.sval;
                 // interprétation de la ligne par l'analyseur correspondant au nom du mot clé
+                System.out.println("Parsing " + f.sval + " Identifier " + f);
                 this.analyseurs.get(motCle).analyser(f, scene);
             }
         } catch (IOException ioe) {
