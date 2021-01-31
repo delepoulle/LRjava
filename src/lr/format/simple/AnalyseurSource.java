@@ -2,7 +2,6 @@ package lr.format.simple;
 
 import lr.Intensite;
 import lr.Point;
-import lr.Scene;
 import lr.Source;
 
 import java.io.IOException;
@@ -20,7 +19,7 @@ public class AnalyseurSource extends AnalyseurAbstrait {
     }
 
     @Override
-    public void analyser(StreamTokenizer tokenizer, Scene scene) throws IOException {
+    public void analyser(StreamTokenizer tokenizer) throws IOException {
         float x, y, z;
         float r, v, b;
 
@@ -41,8 +40,6 @@ public class AnalyseurSource extends AnalyseurAbstrait {
         b = (float) tokenizer.nval;
         Intensite puiss = new Intensite(r, v, b);
         Source source = new Source(puiss, new Point(x, y, z));
-        scene.ajouter(source);
+        format.add(source);
     }
-
-
 }

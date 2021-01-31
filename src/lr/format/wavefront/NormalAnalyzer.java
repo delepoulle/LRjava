@@ -1,6 +1,5 @@
 package lr.format.wavefront;
 
-import lr.Scene;
 import lr.Vecteur;
 
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class NormalAnalyzer extends AbstractAnalyzer {
     }
 
     @Override
-    public void analyser(StreamTokenizer tokenizer, Scene scene) throws IOException {
+    public void analyser(StreamTokenizer tokenizer) throws IOException {
         tokenizer.eolIsSignificant(false);
 
         tokenizer.nextToken();
@@ -29,6 +28,5 @@ public class NormalAnalyzer extends AbstractAnalyzer {
 
         this.format.add(new Vecteur(x, y, z));
         System.out.println("Vertex Normal described as " + new Vecteur(x, y, z));
-
     }
 }

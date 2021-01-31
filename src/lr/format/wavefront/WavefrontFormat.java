@@ -3,10 +3,6 @@ package lr.format.wavefront;
 import lr.*;
 import lr.format.FormatAbstrait;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.StreamTokenizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,9 +10,9 @@ import java.util.Optional;
 public class WavefrontFormat extends FormatAbstrait {
 
     private List<Point> points;
-    private final List<Vecteur> normals;
-    private final List<WavefrontObject> objects;
-    private final List<Primitive> primitives;
+    private List<Vecteur> normals;
+    private List<WavefrontObject> objects;
+    private List<Primitive> primitives;
 
     public WavefrontFormat() {
         super();
@@ -24,14 +20,16 @@ public class WavefrontFormat extends FormatAbstrait {
         this.points = new ArrayList<>();
         this.primitives = new ArrayList<>();
         this.objects = new ArrayList<>();
-        this.ajouter(new ObjectAnalyzer(this));
-        this.ajouter(new VertexAnalyzer(this));
-        this.ajouter(new NormalAnalyzer(this));
-        this.ajouter(new SmoothingAnalyzer(this));
-        this.ajouter(new TextureCoordinatesAnalyzer(this));
-        this.ajouter(new FaceAnalyzer(this));
-        this.ajouter(new MaterialLibAnalyzer(this));
-        this.ajouter(new UseMaterialAnalyzer(this));
+        this.ajouter(
+                new ObjectAnalyzer(this),
+                new VertexAnalyzer(this),
+                new NormalAnalyzer(this),
+                new SmoothingAnalyzer(this),
+                new TextureCoordinatesAnalyzer(this),
+                new FaceAnalyzer(this),
+                new MaterialLibAnalyzer(this),
+                new UseMaterialAnalyzer(this)
+        );
     }
 
     public void add(WavefrontObject object) {
@@ -85,9 +83,8 @@ public class WavefrontFormat extends FormatAbstrait {
             }
         }
 
-        //TODO: à améliorer
+        //TODO: we can do better here, and take Objects into account
         this.primitives.add(new Polygone(p, n, new Materiau()));
-
     }
 
     public Point getVertex(int index) {
@@ -100,8 +97,16 @@ public class WavefrontFormat extends FormatAbstrait {
 
     @Override
     public Scene charger(String nomFichier) {
+        this.normals = new ArrayList<>();
         this.points = new ArrayList<>();
-        super.charger(nomFichier);
+        this.primitives = new ArrayList<>();
+        this.objects = new ArrayList<>();
+
+        return super.charger(nomFichier);
+    }
+
+    @Override
+    protected Scene generateScene() {
         Scene scene = new Scene();
         this.primitives.forEach(scene::ajouter);
         return scene;

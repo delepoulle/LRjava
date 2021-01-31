@@ -2,7 +2,6 @@ package lr.format.simple;
 
 import lr.Point;
 import lr.Polygone;
-import lr.Scene;
 
 import java.io.IOException;
 import java.io.StreamTokenizer;
@@ -18,7 +17,7 @@ public class AnalyseurPolygone extends AnalyseurAbstrait {
     }
 
     @Override
-    public void analyser(StreamTokenizer tokenizer, Scene scene) throws IOException {
+    public void analyser(StreamTokenizer tokenizer) throws IOException {
         float x, y, z;
         int nbsom;
         Point[] tabsom;
@@ -37,6 +36,6 @@ public class AnalyseurPolygone extends AnalyseurAbstrait {
         }
         tabsom[nbsom] = new Point(tabsom[0]);
         Polygone p = new Polygone(tabsom, format.getMateriau());
-        scene.ajouter(p);
+        format.add(p);
     }
 }

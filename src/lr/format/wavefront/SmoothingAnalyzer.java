@@ -1,7 +1,5 @@
 package lr.format.wavefront;
 
-import lr.Scene;
-
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
@@ -16,8 +14,9 @@ public class SmoothingAnalyzer extends AbstractAnalyzer{
     }
 
     @Override
-    public void analyser(StreamTokenizer tokenizer, Scene scene) throws IOException {
+    public void analyser(StreamTokenizer tokenizer) throws IOException {
         tokenizer.eolIsSignificant(false);
+
         //TODO: actually do something here
         tokenizer.nextToken();
         String smoothingState = tokenizer.sval;

@@ -1,12 +1,8 @@
 package lr.format.wavefront;
 
-import lr.Point;
-import lr.Scene;
-
 import java.io.IOException;
 import java.io.StreamTokenizer;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class FaceAnalyzer extends AbstractAnalyzer{
@@ -20,19 +16,14 @@ public class FaceAnalyzer extends AbstractAnalyzer{
     }
 
     @Override
-    public void analyser(StreamTokenizer tokenizer, Scene scene) throws IOException {
+    public void analyser(StreamTokenizer tokenizer) throws IOException {
         tokenizer.wordChars('/', '/');
         tokenizer.eolIsSignificant(true);
-        HashMap<Integer, String> map = new HashMap<>();
-        map.put(StreamTokenizer.TT_EOF, "TT_EOF");
-        map.put(StreamTokenizer.TT_NUMBER, "TT_NUMBER");
-        map.put(StreamTokenizer.TT_WORD, "TT_WORD");
-        map.put(StreamTokenizer.TT_EOL, "TT_EOL");
 
         int type;
-
         List<Integer> vertices = new ArrayList<>();
         List<Integer> normals = new ArrayList<>();
+
         System.out.print("polygon");
         type = tokenizer.nextToken();
         do {
@@ -49,7 +40,6 @@ public class FaceAnalyzer extends AbstractAnalyzer{
                 }
             }
             type = tokenizer.nextToken();
-            //System.out.println("2 Type = " + map.get(type) + " sval = " + tokenizer.sval + " nval = " + tokenizer.nval + " toString" + tokenizer);
         } while (type != StreamTokenizer.TT_EOL && type != StreamTokenizer.TT_EOF);
 
         System.out.println();

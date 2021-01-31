@@ -1,7 +1,6 @@
 package lr.format.simple;
 
 import lr.Point;
-import lr.Scene;
 import lr.Sphere;
 
 import java.io.IOException;
@@ -19,7 +18,7 @@ public class AnalyseurSphere extends AnalyseurAbstrait {
     }
 
     @Override
-    public void analyser(StreamTokenizer tokenizer, Scene scene) throws IOException {
+    public void analyser(StreamTokenizer tokenizer) throws IOException {
         float xc, yc, zc, r;
         tokenizer.nextToken();
         xc = (float) tokenizer.nval;
@@ -31,6 +30,6 @@ public class AnalyseurSphere extends AnalyseurAbstrait {
         r = (float) tokenizer.nval;
 
         Sphere s = new Sphere(r, new Point(xc, yc, zc), format.getMateriau());
-        scene.ajouter(s);
+        format.add(s);
     }
 }

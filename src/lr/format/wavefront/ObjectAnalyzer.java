@@ -1,7 +1,5 @@
 package lr.format.wavefront;
 
-import lr.Scene;
-
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
@@ -17,12 +15,12 @@ public class ObjectAnalyzer extends AbstractAnalyzer {
     }
 
     @Override
-    public void analyser(StreamTokenizer tokenizer, Scene scene) throws IOException {
+    public void analyser(StreamTokenizer tokenizer) throws IOException {
         tokenizer.eolIsSignificant(false);
+
         tokenizer.nextToken();
         String name = tokenizer.sval;
         format.add(new WavefrontObject(name));
         System.out.println("Object named " + name);
-
     }
 }

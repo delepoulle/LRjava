@@ -1,7 +1,6 @@
 package lr.format.wavefront;
 
 import lr.Point;
-import lr.Scene;
 
 import java.io.IOException;
 import java.io.StreamTokenizer;
@@ -18,7 +17,7 @@ public class VertexAnalyzer extends AbstractAnalyzer {
     }
 
     @Override
-    public void analyser(StreamTokenizer tokenizer, Scene scene) throws IOException {
+    public void analyser(StreamTokenizer tokenizer) throws IOException {
         tokenizer.eolIsSignificant(false);
         int type;
         tokenizer.nextToken();
@@ -31,6 +30,5 @@ public class VertexAnalyzer extends AbstractAnalyzer {
 
         System.out.println("Vextex described as " + new Point(x, y, z));
         this.format.add(new Point(x, y, z));
-
     }
 }

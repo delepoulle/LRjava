@@ -1,7 +1,5 @@
 package lr.format.wavefront;
 
-import lr.Scene;
-
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
@@ -17,13 +15,14 @@ public class MaterialLibAnalyzer extends AbstractAnalyzer {
     }
 
     @Override
-    public void analyser(StreamTokenizer tokenizer, Scene scene) throws IOException {
+    public void analyser(StreamTokenizer tokenizer) throws IOException {
         tokenizer.eolIsSignificant(false);
         tokenizer.wordChars('.', '.');
         tokenizer.wordChars('_', '_');
         tokenizer.nextToken();
+
+        //TODO: actually do something here
         String filename = tokenizer.sval;
         System.out.println("Material Library from file " + tokenizer.sval);
-
     }
 }

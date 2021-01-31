@@ -1,6 +1,5 @@
 package lr;
 
-import lr.*;
 import lr.format.simple.FormatSimple;
 import lr.format.wavefront.WavefrontFormat;
 
@@ -18,10 +17,12 @@ class LR {
 	public static void main(String[] args) {
 
 		Renderer r = new Renderer(LARGEUR, HAUTEUR);
-		Scene sc = new WavefrontFormat().charger("chaise_simple.obj");
+
+		Scene sc = new WavefrontFormat().charger("cube_plan.obj");
 		sc.ajouter(new Source(new Intensite(.6f, .3f, .2f), new Point(0.f, 2.f, 0.f)));
 		sc.ajouter(new Source(new Intensite(.2f, .3f, .6f), new Point(0.25f, 3.f, -3.f)));
 		sc.ajouter(new Source(new Intensite(.2f, .6f, .25f), new Point(4.25f, 3.f, -12.f)));
+		//Scene sc = new FormatSimple().charger("simple.txt");
 		sc.display();
 		r.setScene(sc);
 		r.setNiveau(NIVEAU);

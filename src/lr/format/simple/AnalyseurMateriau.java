@@ -18,7 +18,7 @@ public class AnalyseurMateriau extends AnalyseurAbstrait {
     }
 
     @Override
-    public void analyser(StreamTokenizer tokenizer, Scene scene) throws IOException {
+    public void analyser(StreamTokenizer tokenizer) throws IOException {
         float[] ambiant = new float[3];
         float[] diffus = new float[3];
         float[] speculaire = new float[3];
