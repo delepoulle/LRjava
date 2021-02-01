@@ -106,10 +106,8 @@ public class Renderer {
 				dx = 0.5f;
 				dy = 0.5f;
 			} else {
-				dx = ThreadLocalRandom.current().nextFloat();
-				dy = ThreadLocalRandom.current().nextFloat();
-				//dx = (float) Math.random();
-				//dy = (float) Math.random();
+				dx = (float) Math.random();
+				dy = (float) Math.random();
 			}
 
 			float posX = -1.0f + (x + dx) * largeurPixel;
