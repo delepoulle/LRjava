@@ -17,7 +17,6 @@ class LR {
 	public static void main(String[] args) {
 
 		Renderer r = new Renderer(LARGEUR, HAUTEUR);
-		Scene sc = new WavefrontFormat().charger("cube_plan.obj");
 		Scene sc = new FormatSimple().charger("simple.txt");
 		sc.display();
 		r.setScene(sc);
