@@ -3,7 +3,7 @@ package lr.format.wavefront;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
-public class SmoothingAnalyzer extends AbstractAnalyzer{
+public class SmoothingAnalyzer extends AbstractWavefrontAnalyzer {
     public SmoothingAnalyzer(WavefrontFormat format) {
         super(format);
     }

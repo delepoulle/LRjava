@@ -5,7 +5,7 @@ import java.io.StreamTokenizer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FaceAnalyzer extends AbstractAnalyzer{
+public class FaceAnalyzer extends AbstractWavefrontAnalyzer {
     public FaceAnalyzer(WavefrontFormat format) {
         super(format);
     }
@@ -24,7 +24,7 @@ public class FaceAnalyzer extends AbstractAnalyzer{
         List<Integer> vertices = new ArrayList<>();
         List<Integer> normals = new ArrayList<>();
 
-        System.out.print("polygon");
+        System.out.println("polygon");
         type = tokenizer.nextToken();
         do {
             if (type == StreamTokenizer.TT_NUMBER) {

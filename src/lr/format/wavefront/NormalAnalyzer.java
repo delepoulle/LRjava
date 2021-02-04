@@ -5,7 +5,7 @@ import lr.Vecteur;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
-public class NormalAnalyzer extends AbstractAnalyzer {
+public class NormalAnalyzer extends AbstractWavefrontAnalyzer {
     public NormalAnalyzer(WavefrontFormat format) {
         super(format);
     }

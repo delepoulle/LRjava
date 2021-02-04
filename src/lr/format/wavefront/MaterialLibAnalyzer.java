@@ -1,9 +1,13 @@
 package lr.format.wavefront;
 
+import lr.Materiau;
+import lr.format.wavefront.material.MaterialFormat;
+
 import java.io.IOException;
 import java.io.StreamTokenizer;
+import java.util.HashMap;
 
-public class MaterialLibAnalyzer extends AbstractAnalyzer {
+public class MaterialLibAnalyzer extends AbstractWavefrontAnalyzer {
 
     public MaterialLibAnalyzer(WavefrontFormat format) {
         super(format);
@@ -23,6 +27,11 @@ public class MaterialLibAnalyzer extends AbstractAnalyzer {
 
         //TODO: actually do something here
         String filename = tokenizer.sval;
-        System.out.println("Material Library from file " + tokenizer.sval);
+        System.out.println("Material Library from file " + filename);
+        HashMap<String, Materiau> library = new MaterialFormat().charger(filename);
+        library.forEach((s, m) -> System.out.println(
+                "Materiau " + s + "\n" + m
+        ));
+        this.format.appendLibrary(library);
     }
 }

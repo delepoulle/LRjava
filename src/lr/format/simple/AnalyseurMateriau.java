@@ -5,8 +5,16 @@ import lr.Materiau;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
+/**
+ * Analyseur décodant les caractéristiques d'un Materiau
+ */
 public class AnalyseurMateriau extends AnalyseurAbstrait {
 
+    /**
+     *
+     * @param format instance de FormatSimple chargée du décodage
+     * @see Materiau
+     */
     public AnalyseurMateriau(FormatSimple format) {
         super(format);
     }

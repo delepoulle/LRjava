@@ -7,6 +7,10 @@ import lr.Source;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
+/**
+ * Analyseur décodant les caractéristiques d'une Source
+ * @see Source
+ */
 public class AnalyseurSource extends AnalyseurAbstrait {
 
     public AnalyseurSource(FormatSimple format) {

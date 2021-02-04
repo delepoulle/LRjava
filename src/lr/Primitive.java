@@ -180,4 +180,8 @@ public abstract class Primitive {
         return mat.isSpecular();
     }
 
+    public String fullToString() {
+        return this.toString() + "\n" + mat;
+    }
+
 }// Primitive

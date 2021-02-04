@@ -3,7 +3,7 @@ package lr.format.wavefront;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
-public class UseMaterialAnalyzer extends AbstractAnalyzer {
+public class UseMaterialAnalyzer extends AbstractWavefrontAnalyzer {
     public UseMaterialAnalyzer(WavefrontFormat format) {
         super(format);
     }
@@ -21,5 +21,6 @@ public class UseMaterialAnalyzer extends AbstractAnalyzer {
         tokenizer.nextToken();
         String materialName = tokenizer.sval;
         System.out.println("usemtl material named = " + materialName);
+        this.format.pickMaterial(materialName);
     }
 }

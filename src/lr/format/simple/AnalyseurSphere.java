@@ -1,11 +1,16 @@
 package lr.format.simple;
 
 import lr.Point;
+
 import lr.Sphere;
 
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
+/**
+ * Analyseur décodant les caractéristiques d'une Sphere
+ * @see Sphere
+ */
 public class AnalyseurSphere extends AnalyseurAbstrait {
 
     public AnalyseurSphere(FormatSimple format) {

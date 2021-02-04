@@ -117,7 +117,7 @@ public class Scene {
 		System.out.println("-- liste des objets presents dans la scene --");
 
 		for (Primitive p : objets) {
-			System.out.println(p);
+			System.out.println(p.fullToString());
 		}
 	}
 }// Scene

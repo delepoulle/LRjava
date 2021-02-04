@@ -5,7 +5,7 @@ import lr.Point;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
-public class VertexAnalyzer extends AbstractAnalyzer {
+public class VertexAnalyzer extends AbstractWavefrontAnalyzer {
 
     public VertexAnalyzer(WavefrontFormat format) {
         super(format);

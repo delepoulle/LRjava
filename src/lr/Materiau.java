@@ -61,6 +61,15 @@ public class Materiau {
         this.coeffSpec = coeffSpec;
     }
 
+    public Materiau(Materiau that) {
+        this(
+                that.Ka,
+                that.Kd,
+                that.Ks,
+                that.coeffSpec
+        );
+    }
+
     // méthodes d'instance
     /**
      * Fournit les coefficients de réflexion ambiante.

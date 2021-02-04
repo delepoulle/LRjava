@@ -4,15 +4,22 @@ import lr.*;
 import lr.format.FormatAbstrait;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+
+/**
+ * Decodes .obj files
+ */
 public class WavefrontFormat extends FormatAbstrait<Scene> {
 
     private List<Point> points;
     private List<Vecteur> normals;
     private List<WavefrontObject> objects;
     private List<Primitive> primitives;
+    private Materiau currentMaterial;
+    private HashMap<String, Materiau> materialLibrary;
 
     public WavefrontFormat() {
         super();
@@ -20,6 +27,8 @@ public class WavefrontFormat extends FormatAbstrait<Scene> {
         this.points = new ArrayList<>();
         this.primitives = new ArrayList<>();
         this.objects = new ArrayList<>();
+        this.materialLibrary = new HashMap<>();
+        this.currentMaterial = new Materiau();
         this.ajouter(
                 new ObjectAnalyzer(this),
                 new VertexAnalyzer(this),
@@ -84,7 +93,8 @@ public class WavefrontFormat extends FormatAbstrait<Scene> {
         }
 
         //TODO: we can do better here, and take Objects into account
-        this.primitives.add(new Polygone(p, n, new Materiau()));
+        System.out.println("using\n" + this.currentMaterial);
+        this.primitives.add(new Polygone(p, n, new Materiau(this.currentMaterial)));
     }
 
     public Point getVertex(int index) {
@@ -118,4 +128,15 @@ public class WavefrontFormat extends FormatAbstrait<Scene> {
         else return Optional.empty();
     }
 
+    public void putMaterial(String name, Materiau material) {
+        this.materialLibrary.put(name, material);
+    }
+
+    public void pickMaterial(String name) {
+        this.currentMaterial = this.materialLibrary.get(name);
+    }
+
+    public void appendLibrary(HashMap<String, Materiau> library) {
+        library.forEach(this.materialLibrary::put);
+    }
 }

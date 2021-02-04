@@ -3,7 +3,7 @@ package lr.format.wavefront;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
-public class ObjectAnalyzer extends AbstractAnalyzer {
+public class ObjectAnalyzer extends AbstractWavefrontAnalyzer {
 
     public ObjectAnalyzer(WavefrontFormat format) {
         super(format);

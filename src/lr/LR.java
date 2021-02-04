@@ -2,6 +2,7 @@ package lr;
 
 import lr.format.simple.FormatSimple;
 import lr.format.wavefront.WavefrontFormat;
+import lr.format.wavefront.material.MaterialFormat;
 
 /**
  * Classe principale 
@@ -38,5 +39,6 @@ class LR {
 		//Image image = r.getIm();
 
 		image.save("image" + NIVEAU, "png");
+		//new MaterialFormat().charger("chaise_plan.mtl");
 	}
 }

@@ -9,6 +9,10 @@ import lr.format.FormatAbstrait;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Format simple de description de Scène
+ * @see Scene
+ */
 public class FormatSimple extends FormatAbstrait<Scene> {
 
     private Materiau materiau;
@@ -35,19 +39,19 @@ public class FormatSimple extends FormatAbstrait<Scene> {
         return scene;
     }
 
-    public void setMateriau(Materiau materiau) {
+    protected void setMateriau(Materiau materiau) {
         this.materiau = materiau;
     }
 
-    public Materiau getMateriau() {
+    protected Materiau getMateriau() {
         return this.materiau;
     }
 
-    public void add(Primitive primitive) {
+    protected void add(Primitive primitive) {
         this.primitiveList.add(primitive);
     }
 
-    public void add(Source source) {
+    protected void add(Source source) {
         this.sourceList.add(source);
     }
 }

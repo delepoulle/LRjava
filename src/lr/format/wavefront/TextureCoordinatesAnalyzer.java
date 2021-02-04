@@ -3,7 +3,7 @@ package lr.format.wavefront;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
-public class TextureCoordinatesAnalyzer extends AbstractAnalyzer {
+public class TextureCoordinatesAnalyzer extends AbstractWavefrontAnalyzer {
     public TextureCoordinatesAnalyzer(WavefrontFormat format) {
         super(format);
     }
@@ -26,6 +26,5 @@ public class TextureCoordinatesAnalyzer extends AbstractAnalyzer {
         v = (float) tokenizer.nval;
 
         System.out.println("Texture coordinates = (" + u + " ; " + v + ")");
-
     }
 }

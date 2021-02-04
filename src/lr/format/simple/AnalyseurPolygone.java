@@ -6,11 +6,20 @@ import lr.Polygone;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
+/**
+ * Analyseur décodant les caractéristiques d'un Polygone
+ * @see Polygone
+ */
 public class AnalyseurPolygone extends AnalyseurAbstrait {
 
+    /**
+     *
+     * @param format instance de FormatSimple chargée du décodage
+     */
     public AnalyseurPolygone(FormatSimple format) {
         super(format);
     }
+
     @Override
     public String getNom() {
         return "polygone";
