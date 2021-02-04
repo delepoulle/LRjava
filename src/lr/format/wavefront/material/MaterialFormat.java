@@ -8,12 +8,8 @@ import java.util.HashMap;
 public class MaterialFormat extends FormatAbstrait<HashMap<String, Materiau>> {
 
     private String materialName = null;
-    private float Ns;
     private HashMap<String, float[]> colors;
     private HashMap<String, Float> params;
-    private float Ni;
-    private float d;
-    private int illum;
     private HashMap<String, Materiau> materialMap;
 
     public MaterialFormat() {

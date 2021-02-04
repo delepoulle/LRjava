@@ -1,7 +1,6 @@
 package lr.format.simple;
 
 import lr.Point;
-
 import lr.Sphere;
 
 import java.io.IOException;
