@@ -139,7 +139,7 @@ public class Materiau {
      * @return vrai si le matériau comporte une composante spéculaire, faux sinon
      */
     public boolean isSpecular() {
-        return ((Ks[0] != 0.0f) || (Ks[1] != 0.0f) || (Ks[1] != 0.0f));
+        return ((Ks[0] != 0.0f) || (Ks[1] != 0.0f) || (Ks[2] != 0.0f));
     }
 
     /**
