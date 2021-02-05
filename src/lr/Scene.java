@@ -91,7 +91,6 @@ public class Scene {
 	 * @return true si un objet coupe le segment [p1,p2], false sinon
 	 */
 	boolean coupe(Point p1, Point p2) {
-		Intersection p;
 		Rayon r = new Rayon(p1, p2);
 
 		for (Primitive objet : objets) {

@@ -35,7 +35,6 @@ class LR {
 		 }
 		 Image image = r.getIm();
 
-		
 		//Image image = r.getIm();
 
 		image.save("image" + NIVEAU, "png");

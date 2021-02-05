@@ -46,7 +46,7 @@ public class WavefrontFormat extends FormatAbstrait<Scene> {
     }
 
     public void add(Point point) {
-        this.points.add(point);
+        this.points.add(new Point(point));
         this.currentObject().ifPresent((o)-> o.addNormal(this.points.size() - 1));
     }
 
@@ -98,7 +98,7 @@ public class WavefrontFormat extends FormatAbstrait<Scene> {
     }
 
     public Point getVertex(int index) {
-        return this.points.get(index - 1);
+        return new Point(this.points.get(index - 1));
     }
 
     public Vecteur getNormal(int index) {
@@ -126,10 +126,6 @@ public class WavefrontFormat extends FormatAbstrait<Scene> {
         if (this.objects.size() > 0)
             return Optional.of(this.objects.get(this.objects.size() - 1));
         else return Optional.empty();
-    }
-
-    public void putMaterial(String name, Materiau material) {
-        this.materialLibrary.put(name, material);
     }
 
     public void pickMaterial(String name) {

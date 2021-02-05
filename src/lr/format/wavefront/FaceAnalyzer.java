@@ -30,7 +30,7 @@ public class FaceAnalyzer extends AbstractWavefrontAnalyzer {
             if (type == StreamTokenizer.TT_NUMBER) {
                 vertices.add((int) tokenizer.nval);
             } else if (type == StreamTokenizer.TT_WORD) {
-                // we're in trouble here : vertex is described as n1/n2/n3
+                // we're in trouble here: vertex is described as n1/n2/n3
                 // and tokenizer.sval = "n2/n3"
                 String[] parts = tokenizer.sval.split("/");
                 if (parts.length > 2) {

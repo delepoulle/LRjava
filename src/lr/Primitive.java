@@ -81,14 +81,14 @@ public abstract class Primitive {
      * primitive courante. La formule de calcul utilisée est la formule de Phong,
      * prenant en compte l'éclairage ambiant, diffus et spéculaire.
      * 
-     * @param i   le point d'intersection situé sur la primitive courant
-     * @param s   la source dont on souhaite calculer la contribution
-     * @param obs la position de l'observateur
+     * @param intersection   le point d'intersection situé sur la primitive courant
+     * @param source   la source dont on souhaite calculer la contribution
+     * @param observateur la position de l'observateur
      * @return l'intensité calculée
      */
-    public Intensite computeSourceContribution(Point i, Source s, Point obs) {
+    public Intensite computeSourceContribution(Point intersection, Source source, Point observateur) {
 
-        Intensite light = s.getIntensity();
+        Intensite light = source.getIntensity();
 
         // calcul de la contribution ambiante
         float[] coeffAmbiant = mat.getAmbient();
@@ -98,8 +98,8 @@ public abstract class Primitive {
 
         // calcul de la contribution diffuse
         float[] coeffDiffus = mat.getDiffuse();
-        Vecteur normale = this.getNormale(i);
-        Vecteur versSource = new Vecteur(i, s.getPosition());
+        Vecteur normale = this.getNormale(intersection);
+        Vecteur versSource = new Vecteur(intersection, source.getPosition());
         versSource.normalise();
         float ps = normale.produitScalaire(versSource);
         r += coeffDiffus[0] * ps * light.getRed();
@@ -107,9 +107,9 @@ public abstract class Primitive {
         b += coeffDiffus[2] * ps * light.getBlue();
 
         // calcul de la contribution spéculaire
-        Vecteur versObservateur = new Vecteur(i, obs);
+        Vecteur versObservateur = new Vecteur(intersection, observateur);
         versObservateur.normalise();
-        Vecteur ref = (this.reflechi(i, versSource)).direction();
+        Vecteur ref = (this.reflechi(intersection, versSource)).direction();
         ref.normalise();
         ps = ref.produitScalaire(versObservateur);
 

@@ -42,8 +42,8 @@ public class AnalyseurSource extends AnalyseurAbstrait {
         v = (float) tokenizer.nval;
         tokenizer.nextToken();
         b = (float) tokenizer.nval;
-        Intensite puiss = new Intensite(r, v, b);
-        Source source = new Source(puiss, new Point(x, y, z));
+        Intensite intensite = new Intensite(r, v, b);
+        Source source = new Source(intensite, new Point(x, y, z));
         format.add(source);
     }
 }

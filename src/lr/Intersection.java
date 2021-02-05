@@ -4,18 +4,13 @@ import java.util.Iterator;
 
 /** classe qui représente une intersection */
 
-public class Intersection extends Point {
+public class Intersection {
 
     // attributs
-    private Primitive objet; // référence à l'objet intersecté
+    private final Primitive objet; // référence à l'objet intersecté
     private float t; // "distance" paramétrique depuis l'origine du rayon
 
-    /**
-     * crée une intersection vide
-     */
-    public Intersection() {
-        objet = null;
-    }
+    public final Point point; // point d'intersection lui-même
 
     /**
      * crée une intersection. L'objet correspondant contient les coordonnées du
@@ -31,7 +26,7 @@ public class Intersection extends Point {
      *              rayon
      */
     public Intersection(float x, float y, float z, Primitive objet, float t) {
-        super(x, y, z);
+        this.point = new Point(x, y, z);
         this.objet = objet;
         this.t = t;
     }
@@ -80,7 +75,7 @@ public class Intersection extends Point {
      * réflexions sont pris en compte dans cette fonction. Le paramètre niveau
      * permet de régler la profondeur de l'arbre des rayons.
      * 
-     * @param s      la scène utilisée
+     * @param scene      la scène utilisée
      * @param obs    la position de l'observateur
      * @param niveau le nombre maximum de niveaux de réflexion qui doit être pris en
      *               compte
@@ -88,18 +83,16 @@ public class Intersection extends Point {
      * @param py     l'ordonnée du pixel en cours de calcul
      * @return l'éclairage calculé
      */
-    public Intensite eclairer(Scene s, Point obs, int niveau, int px, int py) {
-        Point inter = new Point(x, y, z);
+    public Intensite eclairer(Scene scene, Point obs, int niveau, int px, int py) {
         Intensite i = new Intensite(0.0f, 0.0f, 0.0f);
-        float r, v, b;
 
         // lancer les rayons d'ombrage
-        Iterator<Source> it = s.sourcesIterator();
+        Iterator<Source> it = scene.sourcesIterator();
         while (it.hasNext()) {
             Source source = it.next();
 
-            if (!s.coupe(inter, source.getPosition())) {
-                i.add(objet.computeSourceContribution(inter, source, obs));
+            if (!scene.coupe(this.point, source.getPosition())) {
+                i.add(objet.computeSourceContribution(this.point, source, obs));
             } else {
                 i.add(objet.computeSourceAmbientContribution(source));
             }
@@ -109,13 +102,13 @@ public class Intersection extends Point {
         if (objet.isSpecular() && (niveau > 0)) {
 
             // éclairage par réflexion
-            Vecteur incident = new Vecteur(inter, obs);
-            Rayon ref = objet.reflechi(inter, incident);
-            Intersection intRef = s.intersecte(ref);
+            Vecteur incident = new Vecteur(this.point, obs);
+            Rayon ref = objet.reflechi(this.point, incident);
+            Intersection intRef = scene.intersecte(ref);
 
             if (intRef != null) {
 
-                i.add(intRef.eclairer(s, new Point(this.x, this.y, this.z), niveau - 1, px, py));
+                i.add(intRef.eclairer(scene, this.point, niveau - 1, px, py));
 
             } // else rajouter la couleur de fond
 

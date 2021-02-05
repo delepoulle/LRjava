@@ -46,7 +46,7 @@ public class Source {
     }
 
     public Point getPosition() {
-        return position;
+        return new Point(position);
     }
 
     public String toString() {

@@ -17,7 +17,6 @@ public class UseMaterialAnalyzer extends AbstractWavefrontAnalyzer {
     public void analyser(StreamTokenizer tokenizer) throws IOException {
         tokenizer.eolIsSignificant(false);
 
-        //TODO Actually do something here
         tokenizer.nextToken();
         String materialName = tokenizer.sval;
         System.out.println("usemtl material named = " + materialName);

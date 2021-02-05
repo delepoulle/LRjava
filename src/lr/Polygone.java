@@ -169,7 +169,7 @@ public class Polygone extends Primitive {
 	// (n-2) triangles composant le polygone CONVEXE
 	// voir algo de badouel GGEMS1
 
-	private boolean interne(Point pi) {
+	private boolean interne(Point pointInterne) {
 		float axeDominant, u0, u1, u2, v0, v1, v2, alpha, beta;
 		boolean inter;
 		int i;
@@ -183,8 +183,8 @@ public class Polygone extends Primitive {
 		i = 2;
 
 		if (axeDominant == Math.abs(normale.getZ())) {
-			u0 = pi.x - tabSom[0].x;
-			v0 = pi.y - tabSom[0].y;
+			u0 = pointInterne.x - tabSom[0].x;
+			v0 = pointInterne.y - tabSom[0].y;
 			do {
 				/* The polygon is viewed as (n-2) triangles. */
 				u1 = tabSom[i - 1].x - tabSom[0].x;
@@ -207,8 +207,8 @@ public class Polygone extends Primitive {
 			} while ((!inter) && (++i < tabSom.length - 1));
 
 		} else if (axeDominant == Math.abs(normale.getY())) {
-			u0 = pi.x - tabSom[0].x;
-			v0 = pi.z - tabSom[0].z;
+			u0 = pointInterne.x - tabSom[0].x;
+			v0 = pointInterne.z - tabSom[0].z;
 			do {
 				/* The polygon is viewed as (n-2) triangles. */
 				u1 = tabSom[i - 1].x - tabSom[0].x;
@@ -231,8 +231,8 @@ public class Polygone extends Primitive {
 			} while ((!inter) && (++i < tabSom.length - 1));
 
 		} else if (axeDominant == Math.abs(normale.getX())) {
-			u0 = pi.z - tabSom[0].z;
-			v0 = pi.y - tabSom[0].y;
+			u0 = pointInterne.z - tabSom[0].z;
+			v0 = pointInterne.y - tabSom[0].y;
 			do {
 				/* The polygon is viewed as (n-2) triangles. */
 				u1 = tabSom[i - 1].z - tabSom[0].z;

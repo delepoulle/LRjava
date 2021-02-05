@@ -3,22 +3,22 @@ package lr;
 /**
  * Classe qui représente un point dans un espace 3D
  */
-public class Point {
+public final class Point {
 
     /**
      * coordonnée x
      */
-    protected float x;
+    public final float x;
 
     /**
      * coordonnée y
      */
-    protected float y;
+    public final float y;
 
     /**
      * coordonnée z
      */
-    protected float z; /* coordonnées du point */
+    public final float z; /* coordonnées du point */
 
     /**
      * crée un point de coordonnées (0,0,0)
@@ -51,22 +51,6 @@ public class Point {
         y = p.y;
         z = p.z;
     }
-
-    void set(Point p) {
-        x = p.x;
-        y = p.y;
-        z = p.z;
-    }
-
-    void set(float x, float y, float z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-
-    // void translate(Vecteur v){
-    // x += v.dx; y += v.dy; z += v.dz;
-    // }
 
     /**
      * teste l'égalité de 2 points 3D. La comparaison s'effectue coordonnée par
