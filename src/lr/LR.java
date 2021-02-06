@@ -25,14 +25,10 @@ class LR {
 
 		// r.renderFullImage(NBRAYONS);
 
-<<<<<<< HEAD
-		//Image image = r.getIm();
-=======
 		for (int i = 0; i < HAUTEUR; i++) {
 			r.renderLine(i, NBRAYONS);
 		}
 		Image image = r.getIm();
->>>>>>> main
 
 		image.save("image" + NIVEAU, "png");
 		//new MaterialFormat().charger("chaise_plan.mtl");
