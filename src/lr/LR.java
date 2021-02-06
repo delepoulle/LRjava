@@ -5,7 +5,7 @@ import lr.format.wavefront.WavefrontFormat;
 import lr.format.wavefront.material.MaterialFormat;
 
 /**
- * Classe principale 
+ * Classe principale
  * 
  * auteurs : Christophe Renaud, Samuel Delepoulle, Franck Vandewiele
  */
@@ -18,24 +18,21 @@ class LR {
 	public static void main(String[] args) {
 
 		Renderer r = new Renderer(LARGEUR, HAUTEUR);
-
-		Scene sc = new WavefrontFormat().charger("cube_plan.obj");
-		sc.ajouter(new Source(new Intensite(.6f, .3f, .2f), new Point(0.f, 2.f, 0.f)));
-		sc.ajouter(new Source(new Intensite(.2f, .3f, .6f), new Point(0.25f, 3.f, -3.f)));
-		sc.ajouter(new Source(new Intensite(.2f, .6f, .25f), new Point(4.25f, 3.f, -12.f)));
-		//Scene sc = new FormatSimple().charger("simple.txt");
+		Scene sc = new FormatSimple().charger("simple.txt");
 		sc.display();
 		r.setScene(sc);
 		r.setNiveau(NIVEAU);
 
-		 //r.renderFullImage(NBRAYONS);
+		// r.renderFullImage(NBRAYONS);
 
-		 for (int i=0; i<HAUTEUR; i++){
-			 r.renderLine(i, NBRAYONS);
-		 }
-		 Image image = r.getIm();
-
+<<<<<<< HEAD
 		//Image image = r.getIm();
+=======
+		for (int i = 0; i < HAUTEUR; i++) {
+			r.renderLine(i, NBRAYONS);
+		}
+		Image image = r.getIm();
+>>>>>>> main
 
 		image.save("image" + NIVEAU, "png");
 		//new MaterialFormat().charger("chaise_plan.mtl");
